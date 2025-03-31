@@ -2,6 +2,7 @@
 
 ## Uma API para gerenciar cursos de uma plataforma web 
 
+Projeto desenvolvido como resultado do curso JAVA WEEK - Linux TIPS.
 Esta API RESTfull foi desenvolvida usando a linguagem JAVA, além de tecnologias como o framework Spring Boot.
 Foi utilizado também: 
 - H2 Database: como banco de dados relacional;
@@ -21,10 +22,38 @@ Foi utilizado também:
 - CODIGOS DE RESPOSTA HTTP: quando voce executa os metodos CRUD, eles tem uma serie de respostas possíveis. Onde ajuda a entender a situação de erro ou sucesso da chamada do metodo. Exemplo:  erro 200 sucesso, 404 error. Confira do site http.cat
 
 ### Como rodar a aplicação?
-1 - Instale o java da maneira que preferir: sdk install java 19.0.2-open.
+1. Instale o java da maneira que preferir: sdk install java 19.0.2-open.
 
-2 - Consulte o pom.xml do projeto para demais dependências. Baixe-as e configure.
+2. Consulte o pom.xml do projeto para demais dependências. Baixe-as e configure.
 
-3 - Rode o comando mvn clean e mvn install
+3. Rode o comando mvn clean e mvn install
 
-4 - Rode o comando mvn spring-boot:run
+4. Rode o comando mvn spring-boot:run
+
+### Testando e acessando o Banco de Dados
+
+1. Rode a aplicação e espere a mensagem no console
+
+```bash
+: Tomcat started on port 8080 (http) with context path '/'
+: Started PlataformaDeEnsinoApiApplication 
+```
+
+2. Com a ferramenta Postman aberta, dê um post com sua URL e veja a respota HTTP:
+    - `http://localhost:8080/api/cursos`   (sua URL do post)
+
+      Passando o seguinte `BODY` em `JSON` com seus campos do pacote model:
+
+        ```json
+        {
+            "nome": "java week 2",
+            "preco": 0,
+            "pessoaInstrutora": "kamila"
+        }
+        ```
+
+2. Acesse o console do H2 (`http://localhost:8080/h2-console`) e dê um SELECT * FROM CURSO para ver se os dados estão no banco.
+
+
+
+Autora: Karoene Mendonça

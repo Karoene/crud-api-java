@@ -30,6 +30,8 @@ Foi utilizado também:
 
 4. Rode o comando mvn spring-boot:run
 
+DICA:  Abra o projeto na ide Intellij e Instale as dependencias da aplicação, como maven, hs, jpa, spring web. Lembre-se que a IDE possui um atalho na aba lateral para instalação de dependencias, basta ir em Maven>Lifecycle>clean, dê um clean-all caso não rode por falta de dependencias e ele vai reinstalar.
+
 ### Testando e acessando o Banco de Dados
 
 1. Rode a aplicação e espere a mensagem no console
@@ -43,7 +45,7 @@ Foi utilizado também:
     - `http://localhost:8080/api/cursos`   (sua URL do post)
 
       Passando o seguinte `BODY` em `JSON` com seus campos do pacote model:
-
+      Exemplo de POST: Passando o seguinte BODY  na opção raw, em tipo JSON com seus campos do pacote model:
         ```json
         {
             "nome": "java week 2",
@@ -52,8 +54,11 @@ Foi utilizado também:
         }
         ```
 
-2. Acesse o console do H2 (`http://localhost:8080/h2-console`) e dê um SELECT * FROM CURSO para ver se os dados estão no banco.
-
+2. Acesse o console do H2 (http://localhost:8080/h2-console), no console copie as informações (ex:nome ta tabela) para acessar o console no navegador e dê um SELECT * FROM CURSO para ver se os dados estão no banco.
+```bash
+: H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:cursos'
+: Tomcat started on port 8080 (http) with context path '/'
+```
 
 
 Autora: Karoene Mendonça

@@ -4,6 +4,8 @@ import dev.karoene.plataforma_de_ensino_api.model.Curso;
 import dev.karoene.plataforma_de_ensino_api.repository.CursoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CursoService {
 
@@ -16,5 +18,9 @@ public class CursoService {
 
     public Curso criarCurso(Curso curso){
         return cursoRepository.save(curso);
+    }
+
+    public List<Curso> listarCursos(){
+        return cursoRepository.findAll();
     }
 }

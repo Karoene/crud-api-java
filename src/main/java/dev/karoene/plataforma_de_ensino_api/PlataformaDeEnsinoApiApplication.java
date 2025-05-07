@@ -10,4 +10,6 @@ public class PlataformaDeEnsinoApiApplication {
 		SpringApplication.run(PlataformaDeEnsinoApiApplication.class, args);
 	}
 
+
+
 }

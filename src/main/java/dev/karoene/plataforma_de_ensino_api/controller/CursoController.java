@@ -3,8 +3,10 @@ package dev.karoene.plataforma_de_ensino_api.controller;
 import dev.karoene.plataforma_de_ensino_api.model.Curso;
 import dev.karoene.plataforma_de_ensino_api.service.CursoService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController
@@ -17,8 +19,7 @@ public class CursoController {
 
     CursoService cursoService;
 
-    //PRIMEIRO ENDPOINTS: POST
-    //PARA CRIAR UM CURSO
+    //PRIMEIRO ENDPOINTS: POST    -  PARA CRIAR UM CURSO
     @PostMapping("/cursos")
     @ResponseStatus(HttpStatus.CREATED) //retorno http
     public Curso criarCurso (@RequestBody Curso curso){
@@ -29,6 +30,14 @@ public class CursoController {
     @GetMapping("/cursos")
     @ResponseStatus(HttpStatus.OK)
     public List<Curso> listarCursos(){return cursoService.listarCursos();}
+
+    //ENDPOINT GET : RETORNA CURSO PELO ID , sem passar um BODY (body: json com dados)
+    @GetMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Curso> buscarCursoId
+            (@PathVariable (value = "id") Long id){//variavel de caminho para buscar item especifico
+        return cursoService.buscarCursoPorId(id);
+    }
 
 
 

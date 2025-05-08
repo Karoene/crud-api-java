@@ -2,6 +2,7 @@ package dev.karoene.plataforma_de_ensino_api.service;
 
 import dev.karoene.plataforma_de_ensino_api.model.Curso;
 import dev.karoene.plataforma_de_ensino_api.repository.CursoRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,4 +24,19 @@ public class CursoService {
     public List<Curso> listarCursos(){
         return cursoRepository.findAll();
     }
+
+    /* retorna os dados do curso passado no ID. Por isso o retorno responseEntity.
+    map para verificar se encontra o curso e responde ok, caso não responde notFound.
+    */
+    public ResponseEntity<Curso> buscarCursoPorId(Long id){
+        return cursoRepository.findById(id)
+                .map(curso -> ResponseEntity.ok().body(curso))
+                .orElse(ResponseEntity.notFound().build());   //LAMBDA EXPRESSIONS
+    }
+
+    public ResponseEntity<Curso> atualizarPorId(Curso curso, Long id){
+        //return
+    }
+
+    public void excluirPorid(Curso curso, long id){ cursoRepository.delete(curso);}
 }

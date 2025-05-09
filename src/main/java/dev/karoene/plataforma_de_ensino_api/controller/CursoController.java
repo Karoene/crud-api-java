@@ -39,6 +39,15 @@ public class CursoController {
         return cursoService.buscarCursoPorId(id);
     }
 
+    //ENDPOINT PUT
+    @PutMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Curso> atualizarCursoPeloId
+            (@PathVariable (value = "id") Long id,
+            @RequestBody Curso curso){  //para pegar os dados do body/curso
+        return cursoService.atualizarPorId(curso, id);
+    }
+
 
 
 

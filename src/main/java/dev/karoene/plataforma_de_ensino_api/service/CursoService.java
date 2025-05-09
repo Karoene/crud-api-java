@@ -35,7 +35,14 @@ public class CursoService {
     }
 
     public ResponseEntity<Curso> atualizarPorId(Curso curso, Long id){
-        //return
+        return cursoRepository.findById(id)
+                .map(cursoToUpdate -> {  //EXPRESSAO LAMBDA
+                    cursoToUpdate.setNome(curso.getNome());
+                    cursoToUpdate.setPessoaInstrutora(curso.getPessoaInstrutora());
+                    cursoToUpdate.setPreco(curso.getPreco());
+                    Curso update = cursoRepository.save(cursoToUpdate);
+                    return ResponseEntity.ok().body(update);  //pode retornar 200(ok) ou 204, vc decide
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     public void excluirPorid(Curso curso, long id){ cursoRepository.delete(curso);}

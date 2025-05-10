@@ -45,5 +45,13 @@ public class CursoService {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    public void excluirPorid(Curso curso, long id){ cursoRepository.delete(curso);}
+    public ResponseEntity<Object> deletarPorId(Long id){
+        return cursoRepository.findById(id)
+                .map(cursoToDelete -> {
+                    cursoRepository.deleteById(id);
+                    return ResponseEntity.noContent().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api") //CAMINHO PADRAO DE TODOS OS ENDPOINTS DO CONTROLLER
@@ -48,6 +49,14 @@ public class CursoController {
         return cursoService.atualizarPorId(curso, id);
     }
 
+    //ENDPOINT DELETE
+    @DeleteMapping("/cursos/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Object> deletarCursoPorId(
+            @PathVariable (value = "id") Long id
+             ){
+        return cursoService.deletarPorId(id);
+    }
 
 
 
